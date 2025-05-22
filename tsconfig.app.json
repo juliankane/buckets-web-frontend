@@ -7,10 +7,12 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
+    "esModuleInterop": true,
+
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
+    /*"verbatimModuleSyntax": true, Disabled for type aliasing e.g. export default type - see src/types/ */ 
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
@@ -22,14 +24,18 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
+    "outDir": "dist",
 
     "baseUrl": "./src",
     "paths": {
       "@components/*": ["./components/*"],
       "@pages/*": ["./pages/*"],
       "@assets/*": ["./assets/*"],
-      "@styles/*": ["./styles/*"]
+      "@styles/*": ["./styles/*"],
+      "@layouts/*": ["./layouts/*"],
+      "@hooks/*": ["./hooks/*"],
+      "@features/*": ["./features/*"],
     },
   },
-  "include": ["src", "templates"]
+  "include": ["src", "templates", "tailwind.config.js", "express/server.ts"]
 }

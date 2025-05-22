@@ -5,6 +5,51 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+      body { 
+        background-color: #121416; 
+        
+      
+      }
+      
+      #static-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        border-bottom: 2px solid #32D1C6;
+        background-color: #18181b;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 24px;
+      }
+      #static-header .logo {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+      }
+      #static-header .logo-icon {
+        width: 48px;
+        height: 48px;
+        margin-right: 16px;
+        transform: rotate(12deg);
+        fill: #fff;
+      }
+      #static-header .logo-text {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        font-weight: bold;
+        color: #fff;
+        font-size: 2rem;
+        letter-spacing: 0.1em;
+      }
+      #static-header .logo-text-accent {
+        color: #32D1C6;
+      }
+      </style>
   </head>
   <body>
     <div id="root"></div>

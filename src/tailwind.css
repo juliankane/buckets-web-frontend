@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@keyframes slideInRight {
+  0% { transform: translateX(100%); opacity: 0;}
+  100% {transform: translateX(0%);opacity: 1;}
+}
+
+@keyframes slideInLeft {
+  0% { transform: translateX(-100%); opacity: 0; }
+  100% { transform: translateX(0%); opacity: 1; }
+}
+
+.render-slide-right {
+  animation: slideInRight 0.4s ease-out forwards;
+}
+
+.render-slide-left {
+  animation: slideInLeft 0.4s ease-out forwards;
+}
+
+@theme {
+  /* Testing primary colors 'Hot' */
+  --color-bucket-red: #FF3B3F;       
+  --color-bucket-yellow: #FFE600;    
+  --color-bucket-blue: #00B7FF;     
+  --color-bucket-pink: #F54291;    
+  --color-bucket-orange: #FF7C32;   
+  --color-bucket-green: #B3FF4A;     
+  --color-bucket-aqua: #00D9C0;      
+  --color-bucket-purple: #B46FE2;    
+  --color-bucket-sky-blue: #32D1C6;
+
+  /* Background */
+  --color-background-rich: #FFFFFF;       /* Base background */
+  --color-black-soft: #F2F2F2;           
+  --color-black-cool: #F7F9FC;          
+  --color-black-warm: #EFEFEF;           
+
+  /* Border */
+  --color-border: #DDDDDD;               
+
+  /* Text */
+  --color-text-primary: #1A1A1A;        
+  --color-text-secondary: #4A4A4A;       
+  --color-text-heading: #000000;        
+  --color-text-muted: #7A7A7A;            
+  
+  /* Link */
+  --color-link: #007ACC;                 
+  --color-link-hover: #B46FE2;           
+}
