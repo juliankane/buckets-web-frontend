@@ -1,0 +1,18 @@
+
+.DS_Store
+*.log
+node_modules
+/build
+/dist
+express
+
+# Environment files
+.env
+.env.local
+
+# Dependencies
+/package-lock.json
+
+.vscode/
+temp/
+tmp/
