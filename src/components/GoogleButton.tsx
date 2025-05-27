@@ -1,8 +1,7 @@
 import { useGoogleAuth } from '../hooks/useGoogleAuth';
 
-const clientId = "897804990747-m2cfv3l6egk5vq01dd876556pcd2370j.apps.googleusercontent.com";
+const clientId = "dummy-google-id";
 const containerId = "google-login-button";
-
 
 type Props = {
   className?: string

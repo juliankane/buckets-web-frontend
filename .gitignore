@@ -16,3 +16,8 @@ express
 .vscode/
 temp/
 tmp/
+
+cognito.config.js
+
+
+
