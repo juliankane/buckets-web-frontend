@@ -1,3 +1,8 @@
+
+
+![Screenshot From 2025-05-27 17-29-51](https://github.com/user-attachments/assets/2397299a-ab76-4014-9625-f7fc92c0c60b)
+
+
 # Buckit - Development Setup Guide
 
 ## Quick Start
@@ -15,4 +20,3 @@ Follow these steps to run locally:
   `npm run dev`
 6. **Open the app**
    Go to `http://localhost:5173` in your browser or whatever port your terminal says
-
