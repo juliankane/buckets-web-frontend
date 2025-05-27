@@ -2,7 +2,7 @@
 
 // Authorization fields 
 export type AuthType = {
-    preventDefaults(): unknown
+    id?: string
     email?: string
     password?: string
     confirmPassword?: string

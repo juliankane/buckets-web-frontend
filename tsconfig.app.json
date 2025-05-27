@@ -32,9 +32,9 @@
       "@pages/*": ["./pages/*"],
       "@assets/*": ["./assets/*"],
       "@styles/*": ["./styles/*"],
-      "@layouts/*": ["./layouts/*"],
       "@hooks/*": ["./hooks/*"],
       "@features/*": ["./features/*"],
+      "@store/*": ["./store/*"],
     },
   },
   "include": ["src", "templates", "tailwind.config.js", "express/server.ts"]

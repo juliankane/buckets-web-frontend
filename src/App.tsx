@@ -1,5 +1,5 @@
 import { Routes, Route, BrowserRouter} from 'react-router-dom';
-import { AuthBox, Home, } from './pages';
+import { Authenticate, Home, Profile } from './pages';
 import { useEffect } from 'react';
 import Header from './Header'
 
@@ -22,9 +22,10 @@ export default function App() {
       <div className='bg-background-rich min-h-screen min-w-screen'> 
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/signin" element={<AuthBox />}/>
-          <Route path="/register" element={<AuthBox />}/>
-          <Route path="/forgotpassword" element={<AuthBox />}/>
+          <Route path="/signin" element={<Authenticate />}/>
+          <Route path="/register" element={<Authenticate />}/>
+          <Route path="/forgotpassword" element={<Authenticate />}/>
+          <Route path="/profile/:id" element={<Profile />} />
         </Routes>
       </div>
     </BrowserRouter>

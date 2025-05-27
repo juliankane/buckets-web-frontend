@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AuthType } from "../types"
 
 
+
 export function ForgotPasswordForm () {
     const { control, handleSubmit, formState } = useForm<AuthType>({
         defaultValues: {
@@ -11,25 +12,54 @@ export function ForgotPasswordForm () {
         }, mode: "onTouched" })
 
     const [confirmed, setConfirmed] = useState<boolean>(false)
+    const [error, setError] = useState<boolean>(false);
     
-    const onSubmit: SubmitHandler<AuthType> = () => { 
-        // processs - invalid -> trigger error
-        setConfirmed(true) 
-    }
+
+    const onSubmit: SubmitHandler<AuthType> = async ( data ) => {
+        try {
+            const res = await fetch('/api/users/resetpassword', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (!res.ok) throw new Error("Forgot Password failed!");
+            const message = await res.json();
+            console.log(message)
+            setError(false)
+            setConfirmed(true)
+
+            
+        } catch (error) {
+            setError(true)
+            console.log(error)
+        }
+    };
+
+
+
     return (
-        <div className="flex flex-col flex-1 "> 
+        
+        <div className="flex flex-col flex-1 space-y-10"> 
+            <div className="min-h-[2.5rem] relative justify-center items-center flex">
+                {error && <div className=" bg-bucket-red text-text-heading px-4 py-2 rounded shadow text-center max-w-md">
+                     <p>Account does not exist</p>
+                    </div>}
+            </div>
+
             {!confirmed && 
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="space-y-15">
                     <div className="flex flex-col flex-1 justify-center items-center">
-                        <h2 className="text-[35px] text-white">                                
+                        <h2 className="text-[35px] text-text-primary">                                
                             Reset your password
                         </h2>
-                        <p className="text-lg text-white max-w-[80%] text-center mx-auto">
+                        <p className="text-lg text-text-secondary max-w-[80%] text-center mx-auto">
                             Enter your email address and we will send you a link with instructions
                         </p>
                     </div>
-                    
 
                     <div className="mx-30"> 
                     <label htmlFor="email" className="mb-2 text-md text-text-muted">
@@ -66,16 +96,16 @@ export function ForgotPasswordForm () {
         {confirmed && 
             (<div>
                 <div className="flex flex-col flex-1 justify-center items-center text-center space-y-10">
-                    <p className="text-[30px] text-white max-w-[80%] text-center mx-auto">
+                    <p className="text-[30px] text-text-heading max-w-[80%] text-center mx-auto">
                         An email with instructions has been sent 
                         <span className="text-[20px]">
                             <br/>The link provided will expire in 30 minutes
                         </span>
                     </p>    
 
-                    <span className="text-lg text-white">
+                    <span className="text-lg text-text-primary">
                             Didn't receive code?{" "}
-                        <button className="text-blue-600 hover:underline focus:outline-none">
+                        <button className="text-link hover:underline focus:outline-none hover:text-link-hover">
                             Resend code
                         </button>
                     </span>
@@ -83,5 +113,6 @@ export function ForgotPasswordForm () {
             </div>
         )}
     </div>
+
   )
 }

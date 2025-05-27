@@ -3,7 +3,8 @@ import {useForm, SubmitHandler, useWatch  } from "react-hook-form"
 import { GoogleButton } from "../../../components/GoogleButton";
 import { Input } from '../components/Input'
 import {AuthType, FormStepRefType} from '../types'
-
+import {useUserStore} from "@store/userStore"
+import { useNavigate } from "react-router-dom";
 
 type Props = {
     formBack: (show:boolean) => void;
@@ -21,6 +22,8 @@ export function RegisterForm ({formBack, ref}: Props) {
     })
     const [step, setStep] = useState<number>(0);
     const watchStepFields = useWatch({control})
+    const setUser = useUserStore((state) => state.setUser);
+    const navigate = useNavigate()
 
     const nextStep = () => { if (step < 2 && step >= 0) { setStep(step + 1); formBack(true);}};
     
@@ -28,6 +31,7 @@ export function RegisterForm ({formBack, ref}: Props) {
         prevStep() { if (step > 0){ setStep(step-1) }}
     }}, [step]);
 
+    
     const isStepValid = () => {
         switch (step) { 
             case 0: 
@@ -45,9 +49,31 @@ export function RegisterForm ({formBack, ref}: Props) {
 
     useEffect(() => {if (step === 0) { formBack(false) } })
     
-    const onSubmit: SubmitHandler<AuthType> = async (data) => {
-        data.preventDefaults();
-     }
+    const onSubmit: SubmitHandler<AuthType> = async ( data ) => {
+        try {
+            const res = await fetch('/api/users/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (!res.ok) throw new Error("Signup failed");
+
+            const message = await res.json();
+            const user = message.user
+
+            setUser(user);
+            navigate(`/profile/${user.id}`);
+        } catch (error) {
+            console.error("Login error", error);
+            alert("Failed to sign in!")
+        }
+    };
+
+
+
     
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -58,10 +84,10 @@ export function RegisterForm ({formBack, ref}: Props) {
                 {/** Step 1 */}
                 <div className="w-full flex-shrink-0 h-full flex flex-col justify-center ">
                     <GoogleButton className="flex justify-center"/>
-                    <div className="flex items-center my-3">
-                        <div className="flex-grow h-px bg-white/20" />
+                    <div className="flex items-center mx-20 my-10">
+                        <div className="flex-grow h-px bg-text-secondary" />
                         <span className="mx-4 text-text-primary text-md select-none">or</span>
-                        <div className="flex-grow h-px bg-white/20" />
+                        <div className="flex-grow h-px bg-text-secondary" />
                     </div>
                     
                     <div className="mx-30"> 
