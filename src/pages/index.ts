@@ -1,3 +1,3 @@
 export { default as Home } from './Home';
 export { default as Profile } from './Profile'
-export { default as Authenticate} from './Authenticate';
+export { default as Authenticate} from './Auth/Authenticate';

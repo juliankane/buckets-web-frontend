@@ -1,5 +1,3 @@
-
-
 // Authorization fields 
 export type AuthType = {
     id?: string

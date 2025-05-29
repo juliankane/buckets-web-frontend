@@ -1,10 +1,10 @@
-import {  useState, RefObject, useImperativeHandle,  useEffect } from "react";
-import {useForm, SubmitHandler, useWatch  } from "react-hook-form"
-import { GoogleButton } from "../../../components/GoogleButton";
-import { Input } from '../components/Input'
-import {AuthType, FormStepRefType} from '../types'
-import {useUserStore} from "@store/userStore"
+import { useState, RefObject, useImperativeHandle, useEffect } from "react";
+import { useForm, SubmitHandler, useWatch  } from "react-hook-form"
 import { useNavigate } from "react-router-dom";
+import {useUserStore} from "@store/userStore"
+import { AuthType, FormStepRefType} from '../types'
+import { GoogleButton } from "@components/index";
+import { FormSeperator, FormInput, FormButton } from "../components";
 
 type Props = {
     formBack: (show:boolean) => void;
@@ -80,21 +80,15 @@ export function RegisterForm ({formBack, ref}: Props) {
             {/** Sliding form */}
            <div className="flex w-full h-full transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${step * 100}%)` }}>
-                
+
                 {/** Step 1 */}
                 <div className="w-full flex-shrink-0 h-full flex flex-col justify-center ">
                     <GoogleButton className="flex justify-center"/>
-                    <div className="flex items-center mx-20 my-10">
-                        <div className="flex-grow h-px bg-text-secondary" />
-                        <span className="mx-4 text-text-primary text-md select-none">or</span>
-                        <div className="flex-grow h-px bg-text-secondary" />
-                    </div>
+                    <FormSeperator text="or"/>
+                    
                     
                     <div className="mx-30"> 
-                        <label htmlFor="email" className="mb-2 text-md text-text-muted">
-                            email
-                        </label>
-                        <Input name="email" control={control} 
+                        <FormInput header="email" name="email" control={control} 
                             rules={{
                                 required: true,
                                 pattern: {
@@ -115,10 +109,7 @@ export function RegisterForm ({formBack, ref}: Props) {
                     </div>
 
                     <div className="mx-30">
-                        <label htmlFor="password" className="text-md text-text-muted">
-                            password
-                        </label>           
-                        <Input name="password" control={control} 
+                        <FormInput header="password" name="password" control={control} 
                             rules={{
                             required: "Password is required", 
                             minLength: {
@@ -132,12 +123,8 @@ export function RegisterForm ({formBack, ref}: Props) {
                             },
                             }}
                         /> 
-                    
-                    
-                        <label htmlFor="password" className="mb-2 text-md text-text-muted ">
-                            re-enter password
-                        </label>
-                        <Input name="confirmPassword" control={control} 
+
+                        <FormInput header="re-enter password" name="confirmPassword" control={control} 
                             rules={{
                             required: "Password is required",
                             minLength: {
@@ -163,10 +150,7 @@ export function RegisterForm ({formBack, ref}: Props) {
                     </div>
         
                     <div className="mx-30"> 
-                        <label htmlFor="username" className="mb-2 text-md text-text-muted">
-                            Username
-                        </label>
-                        <Input name="username" control={control} 
+                        <FormInput header="Username" name="username" control={control} 
                             rules = {{required: true
                             }}
                         />
@@ -175,28 +159,15 @@ export function RegisterForm ({formBack, ref}: Props) {
             </div>
 
             {/** Local footer buttons */}
-            <div className="flex flex-1 justify-center pb-20">
-                {(step === 0 || step === 1 ) && (
-                    <button type="button" onClick={nextStep} disabled={!isStepValid()}
-                        className={`rounded-full h-10 w-50 text-sm text-white transition-colors duration-200 ease-in-out $
-                            ${isStepValid()
-                                ? 'bg-[#32D1C6] hover:bg-[#32D1C6]/80 cursor-pointer'
-                                : 'bg-gray-700 cursor-not-allowed'}`
-                            }> 
-                            Continue
-                    </button>
+            <div className="pt-2 flex justify-center">
+                {(step === 0 || step === 1) && (
+                    <FormButton text="Continue" type="button" onClick={nextStep} disabled={!isStepValid()}
+                    />
                 )}
-                
-                
+
                 {step === 2 && (
-                    <button type="submit" disabled={!isStepValid()} 
-                        className={`rounded-full h-10 w-50 text-sm text-white transition-colors duration-200 ease-in-out 
-                        ${isStepValid() 
-                                ? 'bg-[#32D1C6] hover:bg-[#32D1C6]/80 cursor-pointer'
-                                : 'bg-gray-700 cursor-not-allowed'}`
-                            }> 
-                            Sign In 
-                    </button>
+                    <FormButton text="Sign In" type="submit" disabled={!isStepValid()}/>
+                    
                 )}
             </div>
         </form>

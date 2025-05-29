@@ -6,8 +6,6 @@ type User = {
     email: string;
 }
 
-
-
 type UserProfile = {
     id: string;
     name: string;
@@ -16,7 +14,5 @@ type UserProfile = {
         "light-mode": boolean;
     };
 }
-
-
 
 export type {User, UserProfile}
