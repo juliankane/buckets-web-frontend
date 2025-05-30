@@ -23,8 +23,8 @@ function AppContent() {
     <Routes>
       {/** Public routes & layout */}
       <Route element={<ColorLayout/>}>
-        <Route element={<LocalLayout/>}>
-          <Route path="/" element={<Home />} />
+        <Route path="/" element={<LocalLayout/>}>
+          <Route index element={<Home />} />
         </Route>
 
         {/** Authorization routes & layout */}

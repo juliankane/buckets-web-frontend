@@ -4,9 +4,9 @@ import { Outlet } from "react-router-dom";
 
 function LocalLayout() {
     return(
-         <div> 
+        <div>         
             <PublicHeader />
-            <main>
+            <main className="w-full pt-35 h-screen">
                 <Outlet/>
             </main>
         </div>

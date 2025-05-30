@@ -16,12 +16,11 @@ export const SidePanelItem: FC<PanelItemProps> = ({
     rightIcon,
 }) => {
     return (
-        <NavLink
-            to={to}
-            className={({ isActive }) =>
-                `w-full h-18 text-[20px] space-x-2  flex items-center rounded-lg
-                hover:bg-black-warm hover:cursor-pointer max-w-xs max-h-20 ${isActive ? 'bg-black-warm' : ''}`
-            }
+        <NavLink to={to} 
+        className={({ isActive }) =>
+            `w-full h-18 text-[20px] space-x-2  flex items-center rounded-lg
+         hover:bg-black-warm hover:cursor-pointer max-w-xs max-h-20 
+         ${isActive ? 'bg-black-warm' : ''}` }
         >
             <span className="flex items-center ml-4 w-8 h-8 justify-center">
                 {leftIcon ? leftIcon : <span className="invisible w-6" />}

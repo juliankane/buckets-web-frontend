@@ -32,9 +32,7 @@ export function SidePanel() {
           ${showPanel ? 'w-64' : 'w-20 border-border/30'}
           h-screen
           overflow-hidden
-        `}
-        style={{
-          transitionProperty: 'width, padding',
+        `}  style={{transitionProperty: 'width, padding',
         }}
       >
         <div className="p-5 items-center h-16">
@@ -47,7 +45,7 @@ export function SidePanel() {
         </div>
 
         <div
-          className={`flex-grow px-2 py-3 space-y-2`}
+          className={`flex-grow h-screen px-2 py-3 space-y-2`}
           style={{
         scrollbarGutter: 'stable both-edges',
         transition: 'padding 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -106,10 +104,13 @@ export function SidePanel() {
           </>
         </div>
         {/* Panel Footer */}
+
+
+
         {showPanel ? (
           <>
         <SidePanelItem
-          to="dashboard"
+          to="profile"
           type="icon"
           leftIcon={<UserCircleIcon className="w-12 h-12 text-gray-700" />}
         >
@@ -119,7 +120,7 @@ export function SidePanel() {
         ) : (
           <>
         <SidePanelItem
-          to="dashboard"
+          to="profile"
           type="icon"
           leftIcon={<UserCircleIcon className="w-12 h-12 text-gray-700" />}
         />
