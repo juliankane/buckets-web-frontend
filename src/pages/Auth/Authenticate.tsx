@@ -48,9 +48,8 @@ export default function Authenticate() {
 
       <div
         className="grid grid-rows-[auto_1fr_auto] w-[900px] space-y-5 pb-50 min-h-screen border-border rounded-xl shadow-2xl shadow-black/10" 
-      > 
-
-             
+      >
+        
         {/* AuthBox Header Heading */}
         <div className="relative flex justify-center items-center pt-55 row-start-1 row-end-2">
           {showBack && <BackButton onClick={handleFormBack} />}

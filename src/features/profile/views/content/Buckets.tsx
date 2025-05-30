@@ -1,9 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { BucketCard } from "@components/BucketCard";
 import { useState } from "react";
-
-
-
-
 
 export function Buckets(){
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -30,8 +27,6 @@ export function Buckets(){
 
   return (
     <div className="p-10">
-  
-     
       {/* Subgrid for cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredBuckets.map(bucket => (

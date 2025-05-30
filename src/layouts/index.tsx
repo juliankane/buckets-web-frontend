@@ -1,3 +1,5 @@
 export { AuthLayout } from './AuthLayout'
 export { LocalLayout } from './LocalLayout'
 export { ProfileLayout } from './ProfileLayout'
+export { SettingsLayout } from './SettingsLayout'
+export { ColorLayout } from './ColorLayout'

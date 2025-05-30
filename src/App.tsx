@@ -1,8 +1,10 @@
 import { Routes, Route, BrowserRouter} from 'react-router-dom';
 import { Authenticate, Home} from './pages';
-import { Dashboard, Buckets} from '@features/ContentViews'
-import { LocalLayout, AuthLayout, ProfileLayout} from './layouts'
+import { Dashboard, Buckets, Account, Appearence, Notifications, Preferences, Privacy, Profile} from '@features/profile/views'
+import { LocalLayout, AuthLayout, ProfileLayout, SettingsLayout, ColorLayout} from './layouts'
 import { useEffect } from 'react';
+import { PrivateRoute } from '@utils/PrivateRoute';
+
 
 function AppContent() {
   useEffect(() => {
@@ -17,30 +19,38 @@ function AppContent() {
   }, []);
 
   return (
-
+    
     <Routes>
-      
       {/** Public routes & layout */}
-      <Route element={<LocalLayout/>}>
-        <Route path="/" element={<Home />} />
+      <Route element={<ColorLayout/>}>
+        <Route element={<LocalLayout/>}>
+          <Route path="/" element={<Home />} />
+        </Route>
+
+        {/** Authorization routes & layout */}
+        <Route element={<AuthLayout/>}>
+          <Route path="/signin" element={<Authenticate />} />
+          <Route path="/register" element={<Authenticate />} />
+          <Route path="/forgotpassword" element={<Authenticate />} />
+        </Route>
+
+        {/** User|Profile routes & layout */}
+      
+        <Route path="/:id" element={<PrivateRoute><ProfileLayout/></PrivateRoute>}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="buckets" element={<Buckets/>}/>
+          <Route path="profile" element={<Profile/>} />
+          <Route path="settings" element={<SettingsLayout/>}>
+
+            <Route index element={<Account/>} />
+            <Route path="appearence" element={<Appearence/>}/>
+            <Route path="notifications" element={<Notifications/>}/>
+            <Route path="preferences" element={<Preferences/>}/>
+            <Route path="privacy" element={<Privacy/>}/>
+          </Route>
+          </Route>
+
       </Route>
-
-
-
-      {/** Authorization routes & layout */}
-      <Route element={<AuthLayout/>}>
-        <Route path="/signin" element={<Authenticate />} />
-        <Route path="/register" element={<Authenticate />} />
-        <Route path="/forgotpassword" element={<Authenticate />} />
-      </Route>
-
-
-      {/** User|Profile routes & layout */}
-      <Route path="/profile/:id" element={<ProfileLayout/>}>
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="buckets" element={<Buckets/>}/>
-      </Route>
-
     </Routes>
 
   );

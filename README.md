@@ -30,3 +30,6 @@ Follow these steps to run locally:
   password: `qQwerty!123`
   
   
+  
+  [#32D1C6]/80
+  

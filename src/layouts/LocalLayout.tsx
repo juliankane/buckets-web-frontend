@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 function LocalLayout() {
     return(
-         <div className='bg-background-rich min-h-screen min-w-screen'> 
+         <div> 
             <PublicHeader />
             <main>
                 <Outlet/>

@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 function AuthLayout() {
     return(
-         <div className='bg-background-rich min-h-screen min-w-screen'> 
+         <div> 
             <AuthHeader />
             <main>
                 <Outlet/>

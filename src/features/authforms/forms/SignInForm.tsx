@@ -15,6 +15,7 @@ export function SignInForm() {
     })
 
     const setUser = useUserStore((state) => state.setUser);
+    const setAuthToken = useUserStore((state) => state.setAuthToken)
     const navigate = useNavigate()
 
     const onSubmit: SubmitHandler<AuthType> = async ( data ) => {
@@ -33,7 +34,8 @@ export function SignInForm() {
             const user = message.user
             
             setUser(user);
-            navigate(`/profile/${user.id}`); // use the actual ID now
+            setAuthToken('bingbong');
+            navigate(`/${user.id}`); // use the actual ID now
 
         } catch (error) {
             console.error("Login error", error);

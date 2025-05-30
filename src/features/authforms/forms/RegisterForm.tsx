@@ -65,7 +65,7 @@ export function RegisterForm ({formBack, ref}: Props) {
             const user = message.user
 
             setUser(user);
-            navigate(`/profile/${user.id}`);
+            navigate(`/${user.id}`);
         } catch (error) {
             console.error("Login error", error);
             alert("Failed to sign in!")
