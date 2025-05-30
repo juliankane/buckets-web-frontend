@@ -1,10 +1,20 @@
+import { ModalPrompt } from "@components/ModalPrompt";
 
 
 
-export function Account(){
-    return(
-        <div className="p-10">
-            <h1>Account</h1>
-        </div>
-    )
+
+
+
+export function Account() {
+
+
+
+    return (
+        <>
+            <div className="justify-between flex"> 
+                <span className="text-lg">Email </span>
+                <ModalPrompt type="submit" >Undefined Inputs</ModalPrompt>
+            </div>
+        </>
+    );
 }

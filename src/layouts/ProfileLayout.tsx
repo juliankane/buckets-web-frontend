@@ -13,6 +13,7 @@ function ProfileLayout() {
                 <div className="top-right flex-shrink-0 flex p-3 pl-10 border-b-2 border-border">
                     <ProfileHeader />
                 </div>
+                
                 <div className="bottom flex-grow overflow-y-auto">
                     <Outlet />
                 </div>

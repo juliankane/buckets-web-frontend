@@ -36,13 +36,13 @@ function AppContent() {
 
         {/** User|Profile routes & layout */}
       
-        <Route path="/:id" element={<PrivateRoute><ProfileLayout/></PrivateRoute>}>
+        <Route path="/:id" element={<PrivateRoute> <ProfileLayout/> </PrivateRoute>}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="buckets" element={<Buckets/>}/>
           <Route path="profile" element={<Profile/>} />
           <Route path="settings" element={<SettingsLayout/>}>
 
-            <Route index element={<Account/>} />
+            <Route path="account" element={<Account/>} />
             <Route path="appearence" element={<Appearence/>}/>
             <Route path="notifications" element={<Notifications/>}/>
             <Route path="preferences" element={<Preferences/>}/>

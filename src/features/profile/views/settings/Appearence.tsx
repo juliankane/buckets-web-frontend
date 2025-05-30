@@ -3,10 +3,14 @@
 
 export function Appearence(){
     return(
-        <div>
+        <>
+            <div className="justify-between flex"> 
+                <span className="text-lg">Email </span>
+                
+            </div>
 
             
-        </div>
+        </>
     )
 
 }
